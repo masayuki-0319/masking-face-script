@@ -3,7 +3,7 @@ import { google } from "@google-cloud/vision/build/protos/protos";
 
 // サービスアカウントキーへのパスを指定
 // Google Cloud Platformで作成したサービスアカウントキーのJSONファイルへのパス
-const keyFilename = "../google-service-account-key.json";
+const keyFilename = "./google-service-account-key.json";
 
 // Vision APIクライアントを初期化
 const visionApiClient = new ImageAnnotatorClient({ keyFilename });
