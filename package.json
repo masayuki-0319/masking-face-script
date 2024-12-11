@@ -1,0 +1,7 @@
+{
+    "name": "masking-face-script",
+    "version": "1.0.0",
+    "license": "UNLICENSED",
+    "private": true,
+    "packageManager": "yarn@4.1.1"
+}
