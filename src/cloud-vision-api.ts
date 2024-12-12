@@ -1,4 +1,4 @@
-import { ImageAnnotatorClient } from "@google-cloud/vision";
+import { ImageAnnotatorClient, protos } from "@google-cloud/vision";
 import { google } from "@google-cloud/vision/build/protos/protos";
 
 // サービスアカウントキーへのパスを指定
@@ -19,7 +19,17 @@ async function detectFacesFromImage(
   try {
     // Vision APIで顔検出を実行
     // result[0]には検出結果が含まれる
-    const [result] = await visionApiClient.faceDetection(imagePath);
+    const [result] = await visionApiClient.faceDetection({
+      image: {
+        source: { filename: imagePath },
+      },
+      features: [
+        {
+          maxResults: 100,
+          type: protos.google.cloud.vision.v1.Feature.Type.FACE_DETECTION,
+        },
+      ],
+    });
     const faceAnnotations = result.faceAnnotations;
 
     // 顔が検出されなかった場合はエラーを投げる
